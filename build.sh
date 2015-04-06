@@ -31,8 +31,8 @@ cp -r tmp/system target/
 cp tmp/file_contexts target/
 echo "Applying patch..."
 cp -r overlay/* target/
-grep ro.build tmp/system/build.prop > target/system/build.prop
-cat overlay/system/build.prop >> target/system/build.prop
+cat overlay/system/build.prop > target/system/build.prop
+cat tmp/system/build.prop >> target/system/build.prop
 rm -rf tmp
 echo "Complete!"
 echo "Packing update.zip"
