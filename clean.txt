@@ -1,4 +1,0 @@
-system/vendor/modemconfig
-system/app/jjhome.apk
-system/etc/jeejen
-system/etc/*.prop
