@@ -2,7 +2,11 @@
 Кухня для портирования сборок под Alcatel 5042D
 
 Для того чтобы собрать порт, достаточно выполнить:
-./build.sh path_to_source_rom.zip
+Сборка CM:
+./build.sh path_to_cm_source_rom.zip CM gapps
+
+Сборка MIUI:
+./build.sh path_to_miui_source_rom.zip MIUI input-xperia
 
 Скрипт распакует прошивку, удалит из нее мусор (что удалять указано в clean.txt, туда при необходимости можно добавить свое). 
 
