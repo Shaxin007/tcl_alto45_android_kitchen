@@ -8,14 +8,65 @@ SOURCE=$1
 PRODUCT=$2
 ADDONS=$3
 
-VER=`cat version`
-
-if [ -z $VER ]; then
-    VER=1
+MODEL=5042D
+BRAND=TCL
+DEVICE=Alto45
+BOARD=msm8916
+LANGUAGE=ru
+REGION=RU
+INPUT_LOCATE=:ru_RU:en_US
+TIMEZONE=Europe/Moscow
+USER=$(whoami)
+HOST=$(hostname)
+RELEASE=4.4.4
+SDK=19
+INCREMENTAL=`cat .inc`
+if [ -z INCREMENTAL ]; then
+    INCREMENTAL=1
 else
-    let "VER++"
+    let "INCREMENTAL++"
 fi
-echo $VER > version
+echo $INCREMENTAL > .inc
+BUILD_NUMBER=$(git rev-parse HEAD | cut -c1-10)
+BUILD_DATE=$(date -R)
+BUILD_DATE_UTC=$(date +%s)
+BUILD_ID="${PRODUCT}_${DEVICE}-userdebug $RELEASE $BUILD_NUMBER #$INCREMENTAL test-keys"
+VERSION="${PRODUCT}_${DEVICE}_${BUILD_NUMBER}#${INCREMENTAL}"
+
+gen_props() {
+local props="
+ro.build.id=$BUILD_NUMBER
+ro.build.display.id=$BUILD_ID
+ro.build.version.incremental=$INCREMENTAL
+ro.build.version.sdk=$SDK
+ro.build.version.codename=REL
+ro.build.version.release=$RELEASE
+ro.build.date=$BUILD_DATE
+ro.build.date.utc=$BUILD_DATE_UTC
+ro.build.type=userdebug
+ro.build.user=$USER
+ro.build.host=$HOST
+ro.build.tags=test-keys
+ro.product.brand=$BRAND
+ro.product.name=$DEVICE
+ro.product.board=$BOARD
+ro.product.cpu.abi=armeabi-v7a
+ro.product.cpu.abi2=armeabi
+ro.product.manufacturer=$BRAND
+ro.build.product=$PRODUCT_$MODEL
+ro.product.model=$MODEL
+ro.product.device=$DEVICE
+ro.default.locale.input=$INPUT_LOCATE
+ro.product.locale.language=$LANGUAGE
+ro.product.locale.region=$REGION
+persist.sys.timezone=$TIMEZONE
+# Do not try to parse ro.build.description or .fingerprint
+ro.build.description=$BUILD_ID
+ro.build.fingerprint=$BRAND/$PRODUCT_$DEVICE/$DEVICE:$RELEASE/$BUILD_NUMBER/$INCREMENTAL:userdebug/test-keys
+ro.build.characteristics=default
+"
+echo "$props" > $1
+}
 
 if [ ! -d release ]; then
     mkdir release
@@ -43,12 +94,18 @@ fi;
 cp -r tmp/META-INF target/
 cp -r tmp/system target/
 cp tmp/file_contexts target/
+rm -rf tmp
 
 # Vendor
 echo "Copying vendor files"
 cp -r vendor/* target/
 # todo нужно определять настройками собирать в system или custpack
 rm target/boot_system.img
+
+# Making build.prop
+echo "Making build.prop"
+gen_props target/system/build.prop
+cat vendor/system/build.prop >> target/system/build.prop
 
 # Product
 echo "Cleaning up..."
@@ -59,6 +116,11 @@ for f in $(cat product/${PRODUCT}/clean.txt); do
         echo "Not found tmp/$f"
      fi
 done
+
+# if contains build.prop
+if [ -f product/${PRODUCT}/build.prop ]; then
+    cp product/${PRODUCT}/build.prop >> target/system/build.prop
+fi
 
 # if contains splash
 if [ -f product/${PRODUCT}/splash.img ]; then
@@ -94,15 +156,10 @@ for addon in ${ADDONS//,/ }; do
     fi
 done
 
-# Making build.prop
-echo "Making build.prop"
-cat tmp/system/build.prop >> target/system/build.prop
-rm -rf tmp
-
 # Packing new rom
-echo "Packing Alto45_${PRODUCT}_#${VER}.zip"
+echo "Packing $VERSION.zip"
 cd target
-zip -r ../release/Alto45_${PRODUCT}_#${VER}.zip ./*
+zip -r ../release/$VERSION.zip ./*
 cd ../
 rm -rf target
-echo "Complete! Update file: Alto45_${PRODUCT}_#${VER}.zip"
+echo "Complete! Update file: $VERSION.zip"
