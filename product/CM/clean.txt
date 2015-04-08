@@ -1,1 +1,1 @@
-system/app/DSPManager.apk0
+system/app/DSPManager.apk
