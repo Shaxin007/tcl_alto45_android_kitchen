@@ -1,0 +1,8 @@
+ro.product.mod_device=${DEVICE}_global;
+ro.config.sms_received_sound=FadeIn.ogg
+ro.config.sms_delivered_sound=MessageComplete.ogg
+ro.config.elder-ringtone=Angel.mp3
+persist.sys.mitalk.enable=false
+ro.config.ringtone=Ring_Synth_04.ogg
+ro.config.notification_sound=pixiedust.ogg
+ro.config.alarm_alert=Alarm_Classic.ogg

@@ -23,6 +23,7 @@ ui_print("[*] Extract files ...");
 package_extract_dir("system", "/system") || abort("Failed to extract dir from \"system\" to \"/system\".");
 ui_print("[*] Create Symlink...");
 symlink("/data/misc/wifi/WCNSS_qcom_cfg.ini", "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini");
+symlink("/persist/WCNSS_qcom_wlan_nv.bin", "/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin");
 symlink("Roboto-Bold.ttf", "/system/fonts/DroidSans-Bold.ttf");
 symlink("Roboto-Regular.ttf", "/system/fonts/DroidSans.ttf");
 symlink("libGLESv2.so", "/system/lib/libGLESv3.so");

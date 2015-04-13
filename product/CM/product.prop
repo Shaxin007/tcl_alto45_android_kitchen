@@ -1,0 +1,4 @@
+ro.cm.version=11-${BUILD_DATE_SHORT}-UNOFFICIAL-${DEVICE}
+ro.cm.releasetype=UNOFFICIAL
+ro.modversion=11-${BUILD_DATE_SHORT}-UNOFFICIAL-${DEVICE}
+ro.cmlegal.url=https://www.cyanogenmod.org/docs/privacy

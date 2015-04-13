@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 if [ -z $1 ]; then
-    echo "Usage: ./build.sh path_to_source_rom.zip [product:CM/MIUI] [addons:gapps,input-xperia]"
+    echo "Usage: ./build.sh path_to_source_rom.zip [product:CM/MIUI] [VERSION:5.4.4 or 11 for cm] [addons:gapps,input-xperia]"
 fi
 
 SOURCE=$1
 PRODUCT=$2
-ADDONS=$3
+PRODUCT_NUMBER=$3
+ADDONS=$4
 
 MODEL=5042D
 BRAND=TCL
@@ -18,54 +19,25 @@ INPUT_LOCATE=:ru_RU:en_US
 TIMEZONE=Europe/Moscow
 USER=$(whoami)
 HOST=$(hostname)
-RELEASE=4.4.4
+PLATFORM=4.4.4
 SDK=19
-INCREMENTAL=`cat .inc`
-if [ -z INCREMENTAL ]; then
-    INCREMENTAL=1
+BUILD_NUMBER=`cat .inc`
+if [ -z BUILD_NUMBER ]; then
+    BUILD_NUMBER=1
 else
-    let "INCREMENTAL++"
+    let "BUILD_NUMBER++"
 fi
-echo $INCREMENTAL > .inc
-BUILD_NUMBER=$(git rev-parse HEAD | cut -c1-10)
+echo ${BUILD_NUMBER} > .inc
+BUILD_ID=$(git rev-parse HEAD | cut -c1-10)
 BUILD_DATE=$(date -R)
+BUILD_DATE_SHORT=$(date +%d-%m-%Y)
 BUILD_DATE_UTC=$(date +%s)
-BUILD_ID="${PRODUCT}_${DEVICE}-userdebug $RELEASE $BUILD_NUMBER #$INCREMENTAL test-keys"
-VERSION="${PRODUCT}_${DEVICE}_${BUILD_NUMBER}#${INCREMENTAL}"
+BUILD_VARIANT="userdebug"
+BUILD_VERSION_TAGS="test-keys"
+VERSION="${PRODUCT}_${PRODUCT_NUMBER}_${DEVICE}_${BUILD_ID}#${BUILD_NUMBER}"
 
 gen_props() {
-local props="
-ro.build.id=$BUILD_NUMBER
-ro.build.display.id=$BUILD_ID
-ro.build.version.incremental=$INCREMENTAL
-ro.build.version.sdk=$SDK
-ro.build.version.codename=REL
-ro.build.version.release=$RELEASE
-ro.build.date=$BUILD_DATE
-ro.build.date.utc=$BUILD_DATE_UTC
-ro.build.type=userdebug
-ro.build.user=$USER
-ro.build.host=$HOST
-ro.build.tags=test-keys
-ro.product.brand=$BRAND
-ro.product.name=$DEVICE
-ro.product.board=$BOARD
-ro.product.cpu.abi=armeabi-v7a
-ro.product.cpu.abi2=armeabi
-ro.product.manufacturer=$BRAND
-ro.build.product=$PRODUCT_$MODEL
-ro.product.model=$MODEL
-ro.product.device=$DEVICE
-ro.default.locale.input=$INPUT_LOCATE
-ro.product.locale.language=$LANGUAGE
-ro.product.locale.region=$REGION
-persist.sys.timezone=$TIMEZONE
-# Do not try to parse ro.build.description or .fingerprint
-ro.build.description=$BUILD_ID
-ro.build.fingerprint=$BRAND/$PRODUCT_$DEVICE/$DEVICE:$RELEASE/$BUILD_NUMBER/$INCREMENTAL:userdebug/test-keys
-ro.build.characteristics=default
-"
-echo "$props" > $1
+    eval "echo \"$(cat $1)\"" >> $2
 }
 
 if [ ! -d release ]; then
@@ -104,8 +76,9 @@ rm target/boot_system.img
 
 # Making build.prop
 echo "Making build.prop"
-gen_props target/system/build.prop
-cat vendor/system/build.prop >> target/system/build.prop
+cat /dev/null > target/system/build.prop
+gen_props build.prop target/system/build.prop
+gen_props vendor/system/build.prop target/system/build.prop
 
 # Product
 echo "Cleaning up..."
@@ -118,8 +91,8 @@ for f in $(cat product/${PRODUCT}/clean.txt); do
 done
 
 # if contains build.prop
-if [ -f product/${PRODUCT}/build.prop ]; then
-    cp product/${PRODUCT}/build.prop >> target/system/build.prop
+if [ -f product/${PRODUCT}/product.prop ]; then
+    gen_props product/${PRODUCT}/product.prop target/system/build.prop
 fi
 
 # if contains splash
