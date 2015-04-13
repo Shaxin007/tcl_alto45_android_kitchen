@@ -40,6 +40,14 @@ gen_props() {
     eval "echo \"$(cat $1)\"" >> $2
 }
 
+mr_proper() {
+    for f in $(cat $1/clean.txt); do
+        if [ -e target/$f ]; then
+            rm -rf target/$f;
+         fi
+    done
+}
+
 if [ ! -d release ]; then
     mkdir release
 fi
@@ -81,14 +89,8 @@ gen_props build.prop target/system/build.prop
 gen_props vendor/system/build.prop target/system/build.prop
 
 # Product
-echo "Cleaning up..."
-for f in $(cat product/${PRODUCT}/clean.txt); do
-    if rm -rf target/$f; then
-        echo "removed tmp/$f"
-     else
-        echo "Not found tmp/$f"
-     fi
-done
+echo "Call to mr proper..."
+mr_proper product/${PRODUCT}
 
 # if contains build.prop
 if [ -f product/${PRODUCT}/product.prop ]; then
@@ -124,8 +126,10 @@ fi
 echo "Installing addons..."
 for addon in ${ADDONS//,/ }; do
     if [ -d addons/${addon} ]; then
+        echo "Call to mr proper..."
+        mr_proper addons/${addon}
         echo "Installing $addon..."
-        cp -r addons/${addon}/* target/system/
+        cp -r addons/${addon}/overlay/* target/system/
     fi
 done
 

@@ -1,0 +1,4 @@
+ro.config.ringtone=Ring_Synth_04.ogg
+ro.config.notification_sound=pixiedust.ogg
+ro.carrier=unknown
+ro.config.alarm_alert=Alarm_Classic.ogg

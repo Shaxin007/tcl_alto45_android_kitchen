@@ -1,0 +1,8 @@
+ro.mk.version=MK44.4-$DEVICE-$BUILD_DATE_SHORT-UNOFFICIAL
+ro.mk.releasetype=UNOFFICIAL
+ro.modversion=MK44.4-$DEVICE-$BUILD_DATE_SHORT-UNOFFICIAL
+ro.config.notification_sound=FadeIn.ogg
+ro.config.alarm_alert=GoodMorning.ogg
+ro.config.ringtone=MI.ogg
+ro.config.sms_received_sound=FadeIn.ogg
+ro.config.sms_delivered_sound=MessageComplete.ogg
