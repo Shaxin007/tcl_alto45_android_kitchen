@@ -6,3 +6,4 @@ persist.sys.mitalk.enable=false
 ro.config.ringtone=Ring_Synth_04.ogg
 ro.config.notification_sound=pixiedust.ogg
 ro.config.alarm_alert=Alarm_Classic.ogg
+persist.sys.mcd_config_file=/system/etc/mcd_default.conf
