@@ -42,9 +42,9 @@ gen_props() {
 
 mr_proper() {
     for f in $(cat $1/clean.txt); do
-        if [ -e target/$f ]; then
-            rm -rf target/$f;
-         fi
+        if rm -rf target/$f; then
+            echo "Mr propper said, that target/$f has been sent to /dev/null"
+        fi
     done
 }
 

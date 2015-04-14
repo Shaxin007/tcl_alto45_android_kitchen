@@ -1,4 +1,6 @@
 system/vendor/modemconfig
 system/app/jjhome.apk
+system/app/BatteryWarning.apk
+system/app/Updater.apk
 system/etc/jeejen
 system/etc/*.prop
