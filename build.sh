@@ -116,10 +116,15 @@ if [ -d product/${PRODUCT}/overlay ]; then
 fi
 
 # Installer
-if [ -d product/${PRODUCT}/META-INF ]; then
-    echo "Copying custom META-INF"
-    rm -rf target/META-INF
-    cp -r product/${PRODUCT}/META-INF target/
+if [ -f product/${PRODUCT}/updater-script ]; then
+    echo "Generating updater-script"
+    cp -f updater/update-binary target/META-INF/com/google/android/update-binary
+    VENDOR_SYMLINKS=$(< updater/vendor-symlinks)
+    PRODUCT_UPDATER=$(eval "echo \"$(cat product/${PRODUCT}/updater-script)\"")
+    eval "echo \"$(cat updater/updater-script)\"" > target/META-INF/com/google/android/updater-script
+else
+    echo "Product updater-script not found!!!"
+    exit 1
 fi
 
 # Addons

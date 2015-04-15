@@ -1,32 +1,5 @@
-ui_print("");
-ui_print("");
-ui_print("");
-ui_print("");
-ui_print("");
-ui_print("");
-ui_print("********************************");
-ui_print("                                ");
-ui_print("    Alcatel 5042D POP 2(4.5)    ");
-ui_print("          MOKEE 44.4            ");
-ui_print("          by deadlink           ");
-ui_print("                                ");
-ui_print("********************************");
-ui_print("");
-ui_print("");
-ui_print("");
-show_progress(1, 115);
-ui_print("[*] Format /system ...");
-format("ext4", "EMMC", "/dev/block/bootdevice/by-name/custpack", "0", "/system");
-mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/custpack", "/system");
-mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/userdata", "/data");
-ui_print("[*] Extract files ...");
-package_extract_dir("system", "/system") || abort("Failed to extract dir from \"system\" to \"/system\".");
-ui_print("[*] Create Symlink...");
 symlink("../bin/fsck.f2fs", "/system/bin/dump.f2fs");
 symlink("../xbin/su", "/system/bin/su");
-symlink("/persist/WCNSS_qcom_wlan_nv.bin", "/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_factory_nv.bin",
-        "/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin");
-symlink("/system/etc/wifi/WCNSS_qcom_cfg.ini", "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini");
 symlink("Roboto-Bold.ttf", "/system/fonts/DroidSans-Bold.ttf");
 symlink("Roboto-Regular.ttf", "/system/fonts/DroidSans.ttf");
 symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
@@ -190,10 +163,3 @@ set_metadata("/system/xbin/librank", "uid", 0, "gid", 0, "mode", 06755, "capabil
 set_metadata("/system/xbin/procmem", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/xbin/procrank", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0");
-ui_print("[*] Flash boot img ...");
-package_extract_file("boot_custpack.img", "/dev/block/bootdevice/by-name/boot");
-ui_print("[*] Wipe dalvik-cache...");
-delete_recursive("/data/dalvik-cache");
-unmount("/data");
-unmount("/system");
-ui_print("[*] Installation complete!");
