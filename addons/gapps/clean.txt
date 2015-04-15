@@ -1,10 +1,7 @@
 system/app/Books.apk
 system/app/GenieWidget.apk
 system/app/Gmail2.apk
-system/app/GoogleCalendarSyncAdapter.apk
-system/app/GoogleContactsSyncAdapter.apk
-system/app/GoogleEars.apk
-system/app/GoogleTTS.apk
+system/app/Google*
 system/app/Hangouts.apk
 system/app/Magazines.apk
 system/app/Maps.apk
@@ -46,12 +43,7 @@ system/lib/libwebp_android.so
 system/lib/libWVphoneAPI.so
 system/priv-app/ConfigUpdater.apk
 system/priv-app/GmsCore.apk
-system/priv-app/GoogleBackupTransport.apk
-system/priv-app/GoogleFeedback.apk
-system/priv-app/GoogleLoginService.apk
-system/priv-app/GoogleOneTimeInitializer.apk
-system/priv-app/GooglePartnerSetup.apk
-system/priv-app/GoogleServicesFramework.apk
+system/priv-app/Google*
 system/priv-app/Phonesky.apk
 system/priv-app/SetupWizard.apk
 system/priv-app/talkback.apk
