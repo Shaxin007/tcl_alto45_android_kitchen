@@ -293,3 +293,6 @@ persist.gps.qc_nlp_in_use=1
 persist.loc.nlp_name=com.qualcomm.services.location
 ro.gps.agps_provider=1
 ro.pip.gated=0
+persist.sys.dalvik.multithread=true
+persist.sys.dun.override=0
+persist.sys.root_access=3
