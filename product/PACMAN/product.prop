@@ -1,0 +1,7 @@
+ro.pacrom.version=pac_${DEVICE}_${BUILD_DATE_SHORT}
+ro.modversion=pac-${BUILD_DATE_SHORT}-UNOFFICIAL-${DEVICE}
+ro.pacstats.url=http://stats.pac-rom.com
+ro.pacstats.name=PAC-man
+ro.pacstats.version=pac-${BUILD_DATE_SHORT}-UNOFFICIAL-${DEVICE}
+ro.pacstats.tframe=1
+ro.cm.releasetype=UNOFFICIAL

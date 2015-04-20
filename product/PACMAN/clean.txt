@@ -1,0 +1,8 @@
+system/app/ChinaMainland.apk
+system/app/fy_4049b0d28f.apk
+system/app/iFlyIME_v5.0.1646.apk
+system/app/com.ybn.yueapp_20150213_v1.3.1.apk
+system/app/cpa_c18e4c1b17524ff6afbee2d3afa48abb_1.4.5.apk
+system/lib/libadblockplus-jni.so
+system/lib/libfilesync.so
+system/lib/libfilesyncjni.so
