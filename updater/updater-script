@@ -25,7 +25,7 @@ ui_print("[*] Create Symlink...");
 ${VENDOR_SYMLINKS}
 ${PRODUCT_UPDATER}
 ui_print("[*] Flash boot img ...");
-package_extract_file("boot_custpack.img", "/dev/block/bootdevice/by-name/boot");
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
 ui_print("[*] Extract data files...");
 package_extract_dir("data", "/data");
 ui_print("[*] Wipe dalvik-cache...");

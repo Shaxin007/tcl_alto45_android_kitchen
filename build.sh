@@ -79,8 +79,6 @@ rm -rf tmp
 # Vendor
 echo "Copying vendor files"
 cp -r vendor/* target/
-# todo нужно определять настройками собирать в system или custpack
-rm target/boot_system.img
 
 # Making build.prop
 echo "Making build.prop"

@@ -1,8 +1,7 @@
-ro.mk.version=MK44.4-$DEVICE-$BUILD_DATE_SHORT-UNOFFICIAL
+ro.mk.version=$PRODUCT_NUMBER-$DEVICE-$BUILD_DATE_SHORT-UNOFFICIAL
 ro.mk.releasetype=UNOFFICIAL
-ro.modversion=MK44.4-$DEVICE-$BUILD_DATE_SHORT-UNOFFICIAL
-ro.config.notification_sound=FadeIn.ogg
-ro.config.alarm_alert=GoodMorning.ogg
-ro.config.ringtone=MI.ogg
-ro.config.sms_received_sound=FadeIn.ogg
-ro.config.sms_delivered_sound=MessageComplete.ogg
+ro.modversion=$PRODUCT_NUMBER-$DEVICE-$BUILD_DATE_SHORT-UNOFFICIAL
+ro.config.notification_sound=Hello.ogg
+ro.config.alarm_alert=Helium.ogg
+ro.config.ringtone=Hello.ogg
+persist.sys.dalvik.vm.lib.2=libart.so
