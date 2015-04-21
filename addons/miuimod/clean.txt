@@ -1,0 +1,10 @@
+system/priv-app/MiuiHome.apk
+system/priv-app/MiuiCamera.apk
+system/priv-app/Weather.apk
+system/priv-app/WeatherProvider.apk
+system/priv-app/Browser.apk
+system/app/MiuiVideo.apk
+system/app/PhotoTable.apk
+system/app/CameraStability.apk
+system/priv-app/Music.apk
+system/priv-app/MusicFX.apk

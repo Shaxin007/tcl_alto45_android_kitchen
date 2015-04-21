@@ -134,7 +134,7 @@ for addon in ${ADDONS//,/ }; do
         echo "Call to mr proper..."
         mr_proper addons/${addon}
         echo "Installing $addon..."
-        cp -r addons/${addon}/overlay/* target/system/
+        cp -r addons/${addon}/overlay/* target/
     fi
 done
 

@@ -1,0 +1,6 @@
+system/app/Gallery.apk
+system/app/Gallery2.apk
+system/app/gallery.apk
+system/priv-app/MiuiGallery.apk
+system/priv-app/MIUIGallery.apk
+

@@ -1,0 +1,3 @@
+#!/system/bin/sh
+busybox renice -19 `busybox pidof com.android.systemui`
+busybox renice -19 `busybox pidof com.hola.launcher`
