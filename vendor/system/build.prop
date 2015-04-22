@@ -296,3 +296,8 @@ ro.pip.gated=0
 persist.sys.dalvik.multithread=true
 persist.sys.dun.override=0
 persist.sys.root_access=3
+wifi.supplicant_scan_interval=180
+pm.sleep_mode=1
+ro.ril.disable.power.collapse=0
+dalvik.vm.verify-bytecode=false
+dalvik.vm.dexopt-flags=v=n,o=v
