@@ -6,3 +6,5 @@ boot
 .inc
 target
 tmp
+/data
+/patcher

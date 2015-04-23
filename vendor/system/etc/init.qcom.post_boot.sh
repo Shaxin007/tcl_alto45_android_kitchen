@@ -81,5 +81,5 @@ echo $oem_version > /sys/devices/soc0/image_crm_version
 # swap
 echo 30 > /proc/sys/vm/swappiness
 echo 80 > /proc/sys/vm/vfs_cache_pressure
-mkswap /dev/block/bootdevice/by-name/system
-swapon /dev/block/bootdevice/by-name/system
+mkswap /dev/block/bootdevice/by-name/swap
+swapon /dev/block/bootdevice/by-name/swap
