@@ -1,8 +1,9 @@
-ro.pacrom.version=pac_${DEVICE}_${BUILD_DATE_SHORT}
-ro.modversion=pac-${BUILD_DATE_SHORT}-UNOFFICIAL-${DEVICE}
+ro.pacrom.version=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
+ro.pacrom.display.version=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
+ro.modversion=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
 ro.pacstats.url=http://stats.pac-rom.com
 ro.pacstats.name=PAC-man
-ro.pacstats.version=pac-${BUILD_DATE_SHORT}-UNOFFICIAL-${DEVICE}
+ro.pacstats.version=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
 ro.pacstats.tframe=1
 ro.cm.releasetype=UNOFFICIAL
 ro.config.notification_sound=Argon.ogg

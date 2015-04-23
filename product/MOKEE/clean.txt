@@ -1,2 +1,10 @@
-system/app/fy.apk
+system/app/fy*
 system/third-app/*
+system/app/BasicDreams.apk
+system/app/HoloSpiralWallpaper.apk
+system/app/Galaxy4.apk
+system/app/LiveWallpapers.apk
+system/app/MagicSmokeWallpapers.apk
+system/app/NoiseField.apk
+system/app/PhaseBeam.apk
+system/app/VisualizationWallpapers.apk

@@ -1,6 +1,7 @@
+symlink("/persist/WCNSS_qcom_wlan_nv.bin", "/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_factory_nv.bin",
+        "/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin");
+symlink("/system/etc/wifi/WCNSS_qcom_cfg.ini", "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini");
 symlink("/system/lib/modules/pronto/pronto_wlan.ko", "/system/lib/modules/wlan.ko");
-symlink("/data/misc/wifi/WCNSS_qcom_cfg.ini", "/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini");
-symlink("/persist/WCNSS_qcom_wlan_nv.bin", "/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin");
 symlink("/persist/ft_fw.bin", "/system/etc/firmware/ft_fw.bin");
 symlink("/persist/mstar_fw.bin", "/system/etc/firmware/mstar_fw.bin");
 symlink("/firmware/dxhdcp2.b00", "/system/etc/firmware/dxhdcp2.b00");
