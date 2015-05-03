@@ -77,9 +77,3 @@ echo $image_variant > /sys/devices/soc0/image_variant
 echo $oem_version > /sys/devices/soc0/image_crm_version
 
 /data/SelfHost/startRIDL.sh &
-
-# swap
-echo 30 > /proc/sys/vm/swappiness
-echo 80 > /proc/sys/vm/vfs_cache_pressure
-mkswap /dev/block/bootdevice/by-name/swap
-swapon /dev/block/bootdevice/by-name/swap
