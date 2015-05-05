@@ -6,4 +6,17 @@ persist.sys.mitalk.enable=false
 ro.config.ringtone=Ring_Synth_04.ogg
 ro.config.notification_sound=pixiedust.ogg
 ro.config.alarm_alert=Alarm_Classic.ogg
+
+persist.sys.miui_feature_config=/system/etc/miui_feature/lite.conf
 persist.sys.mcd_config_file=/system/etc/mcd_default.conf
+
+# Decrease dialing out delay
+ro.telephony.call_ring.delay=1000
+
+# Disable Lockscreen Issues after Call
+ro.lge.proximity.delay=25
+mot.proximity.delay=25
+
+# GPS Tweaks
+ro.ril.def.agps.mode=2
+ro.ril.def.agps.feature=1

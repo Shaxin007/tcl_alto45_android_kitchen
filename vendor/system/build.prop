@@ -98,7 +98,7 @@ ro.telephony.default_network=9
 ro.telephony.def_network_dsds=9,1
 #[BUGFIX]-Mod-END by TSCD.(guchuan.jiang),09/02/2014, PR-778749
 
-debug.sf.hw=1
+debug.sf.hw=0
 debug.egl.hw=1
 debug.composition.type=c2d
 persist.hwc.mdpcomp.enable=true
@@ -257,7 +257,7 @@ ro.sf.lcd_density=220
 persist.debug.wfd.enable=1
 #propery to enable VDS WFD solution
 persist.hwc.enable_vds=1
-ro.min_freq=800000
+ro.min_freq=200000
 
 # [BUGFIX]-Add-BEGIN by TCTNB.Fuqiang.Song,05/09/2014,FR-645189
 #customize SFR requirement to control MTU size,and set MTU less than 1500bytes.
@@ -285,7 +285,7 @@ dalvik.vm.heapsize=256m
 dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=2m
 dalvik.vm.heapmaxfree=8m
-persist.service.adb.enable=0
+persist.service.adb.enable=1
 persist.sys.dalvik.vm.lib=libdvm.so
 net.bt.name=Android
 dalvik.vm.stack-trace-file=/data/anr/traces.txt

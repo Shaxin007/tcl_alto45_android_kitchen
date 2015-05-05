@@ -116,7 +116,13 @@ fi
 # Installer
 if [ -f product/${PRODUCT}/updater-script ]; then
     echo "Generating updater-script"
-    cp -f updater/update-binary target/META-INF/com/google/android/update-binary
+    # if updater exist
+    if [ -d product/${PRODUCT}/updater ]; then
+        cp -r product/${PRODUCT}/updater/* target/META-INF/com/google/android/
+    else
+        cp -f updater/update-binary target/META-INF/com/google/android/update-binary
+    fi
+    # generate updater-script
     echo "$(VENDOR_SYMLINKS=$(envsubst < updater/vendor-symlinks) \
         PRODUCT_UPDATER=$(envsubst < product/${PRODUCT}/updater-script) \
         envsubst < updater/updater-script)" > target/META-INF/com/google/android/updater-script
