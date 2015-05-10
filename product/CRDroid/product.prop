@@ -1,0 +1,8 @@
+ro.cm.version=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
+ro.cm.releasetype=UNOFFICIAL
+ro.modversion=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
+ro.cmlegal.url=https://www.cyanogenmod.org/docs/privacy
+ro.cm.display.version=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
+ro.config.notification_sound=Argon.ogg
+ro.config.alarm_alert=Hassium.ogg
+ro.config.ringtone=Orion.ogg
