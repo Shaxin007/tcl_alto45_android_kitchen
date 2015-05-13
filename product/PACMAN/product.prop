@@ -5,7 +5,3 @@ ro.pacstats.url=http://stats.pac-rom.com
 ro.pacstats.name=PAC-man
 ro.pacstats.version=${PRODUCT}-${PRODUCT_VERSION}-${DEVICE}-UNOFFICIAL
 ro.pacstats.tframe=1
-ro.cm.releasetype=UNOFFICIAL
-ro.config.notification_sound=Argon.ogg
-ro.config.alarm_alert=Hassium.ogg
-ro.config.ringtone=Orion.ogg

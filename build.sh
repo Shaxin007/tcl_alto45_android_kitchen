@@ -34,7 +34,8 @@ BUILD_DATE_SHORT=$(date +%d-%m-%Y)
 BUILD_DATE_UTC=$(date +%s)
 BUILD_VARIANT="userdebug"
 BUILD_VERSION_TAGS="test-keys"
-VERSION="${PRODUCT}_${PRODUCT_NUMBER}_${DEVICE}_${BUILD_ID}#${BUILD_NUMBER}"
+VERSION="${PRODUCT}_${PRODUCT_NUMBER}_${DEVICE}_${BUILD_NUMBER}"
+OTA_SERVER="http://alto45-ota.tk"
 
 gen_props() {
     eval "echo \"$(cat $1)\"" >> $2
@@ -148,4 +149,10 @@ cd target
 zip -r ../release/$VERSION.zip ./*
 cd ../
 rm -rf target
+md5=($(md5sum release/$VERSION.zip))
+# md5 sum for ota
+echo $md5 > release/$VERSION.zip.md5sum
+# changelist
+touch release/$VERSION.txt
+
 echo "Complete! Update file: $VERSION.zip"
